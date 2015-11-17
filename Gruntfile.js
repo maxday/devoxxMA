@@ -6,6 +6,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('grunt-nightwatch');
 
   //var myCustomHeader = grunt.option('myCustomHeader') || 'gruntPower';
   //var shouldLog = grunt.option('shouldLog') || false;
@@ -71,6 +72,30 @@ module.exports = function(grunt) {
       }
     },
 
+    nightwatch: {
+      options: {
+        standalone: true,
+        //downlad if not found
+        jar_version: '2.44.0',
+        jar_path: 'test-e2e/selenium-server-standalone-2.44.0.jar',
+        src_folders: ['test-e2e'],
+        output_folder: 'report',
+        test_settings: {
+          default: {
+            desiredCapabilities: {
+              browserName: "chrome",
+              javascriptEnabled: true,
+            }
+          }
+        },
+        selenium: {
+          cli_args: {
+            "webdriver.chrome.driver": "test-e2e/chromedriver"
+          }
+        }
+      }
+    }
+
   });
 
   grunt.registerTask('run', [
@@ -86,6 +111,11 @@ module.exports = function(grunt) {
   grunt.registerTask('test', [
     'connect:test',
     'karma'
+  ]);
+
+  grunt.registerTask('e2e', [
+    'connect:test',
+    'nightwatch'
   ]);
 
 };
