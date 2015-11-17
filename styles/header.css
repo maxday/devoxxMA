@@ -1,0 +1,17 @@
+/* line 6, header.scss */
+.hello {
+  text-align: center;
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+}
+/* line 11, header.scss */
+.hello h1 {
+  background-color: #EEEEEE;
+}
+/* line 15, header.scss */
+.hello .btn {
+  font-size: 20px;
+  padding: 14px 24px;
+}
+
+/*# sourceMappingURL=header.css.map */

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Hello Devoxx !</title>
+
+  <!-- build:css(.) styles/main.css -->
+  <link rel="stylesheet" href="styles/header.css" />
+  <link rel="stylesheet" href="styles/footer.css" />
+  <!-- endbuild -->
+
+  <!-- build:css(.) styles/vendor.css -->
+  <link rel="stylesheet" href="styles/bootstrap.css" />
+  <!-- endbuild -->
+</head>
+
+<body>
+
+  <div class="header">
+    <div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#/">devoxxma</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#/">Home</a></li>
+            <li><a ng-href="#/">Page 1</a></li>
+            <li><a ng-href="#/">Page 2</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="jumbotron hello">
+    <div class="container">
+      <h1>Hello, DevoxxMA!</h1>
+      <p>Grunt power !</p>
+      <p><a class="btn btn-primary btn-lg" href="#" role="button">Action 1</a>
+        <a class="btn btn-warning btn-lg" href="#" role="button">Action 2</a>
+        <a class="btn btn-danger btn-lg" href="#" role="button">Action 3</a></p>
+    </div>
+  </div>
+  <div class="container">
+
+    <form>
+      <div class="form-group">
+        <h1>Add</h1>
+        <label for="sumA">First number</label>
+        <input type="text" class="form-control" id="sumA" value="" placeholder="Enter the first number">
+      </div>
+      <div class="form-group">
+        <label for="sumB">Second number</label>
+        <input type="text" class="form-control" id="sumB" placeholder="Enter the second number">
+      </div>
+      <div class="form-group">
+        <label for="resultSum">Result</label>
+        <input type="text" class="form-control" id="resultSum" />
+      </div>
+      <button type="button" id="btnSum" class="btn btn-primary">Sum these numbers</button>
+    </form>
+    <hr />
+    <form>
+      <div class="form-group">
+        <h1>Divide</h1>
+        <label for="divA">First number</label>
+        <input type="text" class="form-control" id="divA" placeholder="Enter the first number">
+      </div>
+      <div class="form-group">
+        <label for="divB">Second number</label>
+        <input type="text" class="form-control" id="divB" placeholder="Enter the second number">
+      </div>
+      <div class="form-group">
+        <label for="resultDiv">Result</label>
+        <input type="text" class="form-control" id="resultDiv" />
+      </div>
+      <button type="button" id="btnDiv" class="btn btn-primary">Divide these numbers</button>
+    </form>
+
+  </div>
+  <hr />
+  <div class="footer">
+    <img src="images/pic1.jpg" width="300" />
+    <img src="images/pic2.jpg" width="300" />
+    <img src="images/pic3.jpg" width="300" />
+    <div class="container">
+      <p>Maxime DAVID @xouuox</p>
+    </div>
+  </div>
+
+  <!-- build:js(.) js/script.js -->
+  <script src="js/math.add.js"></script>
+  <script src="js/math.div.js"></script>
+  <script src="js/math.calc.js"></script>
+  <!-- endbuild -->
+
+</body>
+
+</html>

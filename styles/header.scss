@@ -1,0 +1,20 @@
+$hello-border-color: #000000;
+$hello-title-backouground-color: #EEEEEE;
+$button-font-size : 20px;
+$button-padding : 14px 24px;
+
+.hello {
+  text-align: center;
+  border-top: 1px solid $hello-border-color;
+  border-bottom: 1px solid $hello-border-color;
+
+  h1 {
+    background-color: $hello-title-backouground-color;
+  }
+
+  .btn {
+    font-size: $button-font-size;
+    padding: $button-padding;
+
+  }
+}
