@@ -5,6 +5,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-karma');
 
   //var myCustomHeader = grunt.option('myCustomHeader') || 'gruntPower';
   //var shouldLog = grunt.option('shouldLog') || false;
@@ -29,6 +30,11 @@ module.exports = function(grunt) {
             });
             return middlewares;
           }
+        }
+      },
+      test: {
+        options: {
+          port: 9001,
         }
       }
     },
@@ -56,7 +62,14 @@ module.exports = function(grunt) {
           'styles/*', 'index.html'
         ]
       }
-    }
+    },
+
+    karma: {
+      unit: {
+        configFile: 'test/karma.conf.js',
+        singleRun : true
+      }
+    },
 
   });
 
@@ -68,5 +81,11 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', [
     'run'
-  ])
+  ]);
+
+  grunt.registerTask('test', [
+    'connect:test',
+    'karma'
+  ]);
+
 };
