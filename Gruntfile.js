@@ -3,6 +3,7 @@
 module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-compass');
 
   //var myCustomHeader = grunt.option('myCustomHeader') || 'gruntPower';
   //var shouldLog = grunt.option('shouldLog') || false;
@@ -28,11 +29,23 @@ module.exports = function(grunt) {
           }
         }
       }
+    },
+
+    compass: {
+      server: {
+        options: {
+          sourcemap: true,
+          sassDir: 'styles',
+          cssDir: 'styles'
+        }
+      }
     }
+
   });
 
   grunt.registerTask('run', [
-    'connect:server',
+    'compass',
+    'connect:server'
   ]);
 
   grunt.registerTask('default', [
