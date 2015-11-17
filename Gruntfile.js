@@ -16,8 +16,14 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
+
+  grunt.loadNpmTasks('grunt-contrib-compress');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+
   //var myCustomHeader = grunt.option('myCustomHeader') || 'gruntPower';
   //var shouldLog = grunt.option('shouldLog') || false;
+
+  var pkg = grunt.file.readJSON('package.json');
 
   grunt.initConfig({
     connect: {
@@ -158,6 +164,21 @@ module.exports = function(grunt) {
         eqeqeq: true,
         asi: false //semicolon insertion
       }
+    },
+
+    compress: {
+      main: {
+        options: {
+          archive: 'release/' + pkg.name + '-' + pkg.version + '.zip'
+        },
+        files: [{
+          src: ['dist/**']
+        }]
+      }
+    },
+
+    clean: {
+      build: ['dist', 'release', 'generatedImages']
     }
 
   });
@@ -183,6 +204,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
+    'clean',
     'compass',
     'copy:html',
     'copy:images',
@@ -191,7 +213,8 @@ module.exports = function(grunt) {
     'uglify',
     'cssmin',
     'imagemin',
-    'usemin'
+    'usemin',
+    'compress'
   ])
 
 };
