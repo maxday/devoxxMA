@@ -4,6 +4,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   //var myCustomHeader = grunt.option('myCustomHeader') || 'gruntPower';
   //var shouldLog = grunt.option('shouldLog') || false;
@@ -12,8 +13,9 @@ module.exports = function(grunt) {
     connect: {
       server: {
         options: {
-          keepalive: true,
+          //keepalive: false,
           port: 9000,
+          livereload: 35729,
           hostname: 'localhost',
           middleware: function(connect, options, middlewares) {
             middlewares.unshift(function(req, res, next) {
@@ -39,13 +41,29 @@ module.exports = function(grunt) {
           cssDir: 'styles'
         }
       }
+    },
+
+    watch: {
+      compass: {
+        files: ['styles/header.scss', 'styles/footer.scss'],
+        tasks: ['compass:server']
+      },
+      livereload: {
+        options: {
+          livereload: '<%= connect.server.options.livereload %>'
+        },
+        files: [
+          'styles/*', 'index.html'
+        ]
+      }
     }
 
   });
 
   grunt.registerTask('run', [
     'compass',
-    'connect:server'
+    'connect:server',
+    'watch'
   ]);
 
   grunt.registerTask('default', [
