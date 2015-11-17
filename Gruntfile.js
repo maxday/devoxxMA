@@ -15,7 +15,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   //var myCustomHeader = grunt.option('myCustomHeader') || 'gruntPower';
   //var shouldLog = grunt.option('shouldLog') || false;
 
@@ -76,7 +76,7 @@ module.exports = function(grunt) {
     karma: {
       unit: {
         configFile: 'test/karma.conf.js',
-        singleRun : true
+        singleRun: true
       }
     },
 
@@ -137,7 +137,7 @@ module.exports = function(grunt) {
         }
       }
     },
-    
+
     copy: {
       html: {
         src: 'index.html',
@@ -150,6 +150,15 @@ module.exports = function(grunt) {
         expand: true
       }
     },
+
+    jshint: {
+      files: ['js/*.js'],
+      options: {
+        curly: true,
+        eqeqeq: true,
+        asi: false //semicolon insertion
+      }
+    }
 
   });
 
